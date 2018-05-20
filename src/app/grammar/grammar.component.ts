@@ -19,13 +19,19 @@ export class GrammarComponent implements OnInit {
     //console.log('log ng on init');
   }
 
-  reconhecer(): void{
+  reconhecer(): void {
     console.log(this.textArea);
     this.grammar = new Grammar(this.textArea);
   }
 
 
+  gerarSent(): void {
 
+  }
+
+  gerarLing(): void {
+
+  }
 
 
   //Logs de teste para ver como funciona
