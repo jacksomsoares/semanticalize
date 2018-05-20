@@ -9,7 +9,7 @@ import { Grammar } from '../Classes/Grammar';
 })
 export class GrammarComponent implements OnInit {
   grammar: Grammar;
-  textArea: String;
+  textArea: string;
 
   constructor() {
     //console.log('log constructor');
@@ -21,12 +21,7 @@ export class GrammarComponent implements OnInit {
 
   reconhecer(): void{
     console.log(this.textArea);
-    this.grammar = new Grammar(this.textArea);
   }
-
-
-
-
 
   //Logs de teste para ver como funciona
   /*

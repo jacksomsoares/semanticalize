@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { GrammarComponent } from './grammar/grammar.component';
+import { LanguageComponent } from './language/language.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GrammarComponent
+    GrammarComponent,
+    LanguageComponent
   ],
   imports: [
     BrowserModule,

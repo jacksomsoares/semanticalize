@@ -1,15 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-        <p>Insira a Gramatica</p>
-        <textarea class="txt-grammar" [(ngModel)]="textArea" placeholder="Exemple placeholder bla blu"></textarea>
-    </div>
-    <div class="col">
-        <button (click)="reconhecer()" >Reconhecer</button>
-        <button>Gerar Sentenças</button>
-        <button>Gerar Linguagem</button>
-    </div>
+<div class="row">
+  <div class="col-12">
+      <p>Insira a Gramatica</p>
+      <textarea class="txt-grammar" [(ngModel)]="textArea" placeholder="Insira a gramatica aqui"></textarea>
   </div>
-
-
+  <div class="col">
+      <button (click)="reconhecer()" >Reconhecer</button>
+      <button>Gerar Sentenças</button>
+  </div>
 </div>
+
+<app-language [grammar]=textArea></app-language>
