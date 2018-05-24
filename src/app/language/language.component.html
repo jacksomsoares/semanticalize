@@ -1,0 +1,14 @@
+<div class="row"  style="margin-top: 20px">  
+  <div class="col-12">
+      <h3>Linguagem</h3>
+      <label for="quantSamples">Precisão: </label>
+      <input id="quantSamples" type="number" [(ngModel)]="precision">
+      <button (click)="generate()" >Gerar Linguagem</button>
+  </div>
+  <div class="col-12">
+      <textarea class="txt-grammar" [(ngModel)]="language" placeholder="Language L(G) = ..."></textarea>
+  </div>
+  <div class="col-12">
+      <textarea class="txt-grammar" [(ngModel)]="samples" placeholder="Samples for the language"></textarea>
+  </div>
+</div>
