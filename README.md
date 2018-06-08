@@ -1,3 +1,10 @@
+G = ({ S, A, B}, { a, b }, P, S)
+p=
+S -> AB|b
+A -> aAB|aA|&
+B -> b|bB
+
+
 # Semanticalize
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
