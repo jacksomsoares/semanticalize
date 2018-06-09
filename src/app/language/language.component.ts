@@ -30,9 +30,6 @@ export class LanguageComponent implements OnInit {
     this.language = buildLang;
     this.samples = holdSentences.toString();
     
-    
-    
-        
   }
 
 }

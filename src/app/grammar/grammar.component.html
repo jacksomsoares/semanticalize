@@ -23,13 +23,15 @@
     <div class="col-6">
         <app-language [grammar]=textArea></app-language>        
     </div>
-    <!-- Esse trecho do First e Follow deve virar um componente -->
+    
     <div class="col-6">
-      <div class="form-group">
-        <label for="comment">FIRST e FOLLOW:</label>
-        <textarea class="form-control " rows="5" id="comment"></textarea>
-      </div>
+      <app-first [grammar]=textArea></app-first>
     </div>
+
+    <div class="col-6">
+      <app-follow [grammar]=textArea></app-follow>
+    </div>
+
     <div class="col-6">
       <app-prediction-table></app-prediction-table>
     </div>   
