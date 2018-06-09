@@ -1,7 +1,6 @@
-export class PreditiveTable {    
+export class PreditiveTable {
 
     table: Map<string, Map<string, string>>;
-    table2: Array<Array<string>>;
     /*
     The structure looks like this:
         Map< NTerminal Map<terminal, value >>
@@ -16,8 +15,41 @@ export class PreditiveTable {
     
     */
 
-    constructor (){
+    constructor() {
         this.table = new Map<string, Map<string, string>>();
-        this.table2 = new Array();
+    }
+
+    mockData() {
+        let tempMap = new Map<string, string>();
+        tempMap.set('id', "TE'");
+        tempMap.set('(', "TE'");
+        this.table.set('E', tempMap);
+
+        tempMap = new Map<string, string>();
+        tempMap.set('+', "+TE'");
+        tempMap.set(')', "&");
+        tempMap.set('$', "&");
+
+        this.table.set("E'", tempMap);
+
+        tempMap = new Map<string, string>();
+        tempMap.set('id', "FT'");
+        tempMap.set('(', "FT'");
+
+        this.table.set("T", tempMap);
+
+        tempMap = new Map<string, string>();
+        tempMap.set('+', "&");
+        tempMap.set('*', "*FT'");
+        tempMap.set(')', "&");
+        tempMap.set('$', "&");
+
+        this.table.set("T'", tempMap);
+
+        tempMap = new Map<string, string>();
+        tempMap.set('id', "id");
+        tempMap.set('(', "(E)");
+
+        this.table.set("F", tempMap);
     }
 }
