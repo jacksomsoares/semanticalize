@@ -3,7 +3,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label for="comment">Insira a Gramatica:</label>
-        <textarea class="form-control " rows="5" id="comment"></textarea>
+        <textarea class="form-control txt-grammar" [(ngModel)]="textArea" rows="5" id="comment" placeholder="Exemple placeholder bla blu"></textarea>
         <div class="btn">
           <div class="row">
             <div class="col">
@@ -25,6 +25,7 @@
         <textarea class="form-control " rows="5" id="comment"></textarea>
       </div>
     </div>
+    <app-language [grammar]=textArea></app-language>
   </div>
 </div>
 <!-- <div class="container">
@@ -40,5 +41,3 @@
     </div>
   </div>
 </div> -->
-<app-language [grammar]=textArea></app-language>
-
