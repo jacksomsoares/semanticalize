@@ -7,6 +7,8 @@ import { GrammarComponent } from './grammar/grammar.component';
 import { LanguageComponent } from './language/language.component';
 import { RecognitionTableComponent } from './recognition-table/recognition-table.component';
 import { PredictionTableComponent } from './prediction-table/prediction-table.component';
+import { FirstComponent } from './first/first.component';
+import { FollowComponent } from './follow/follow.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { PredictionTableComponent } from './prediction-table/prediction-table.co
     GrammarComponent,
     LanguageComponent,
     RecognitionTableComponent,
-    PredictionTableComponent
+    PredictionTableComponent,
+    FirstComponent,
+    FollowComponent
   ],
   imports: [
     BrowserModule,

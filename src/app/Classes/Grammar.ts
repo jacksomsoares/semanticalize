@@ -353,5 +353,35 @@ export class Grammar {
         }
     }
 
+    //função para achar se a produção é um não terminal
+    //ENTRADA: letra a ser verificada (string)
+    //SAIDA: true ou false (boolean)
+    isNT(producao: string){
+
+        for(let x = 0; x < this.naoTerminais.length; x++){
+            if(producao === this.naoTerminais[x]){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    //função para achar se a produção é um terminal
+    //ENTRADA: letra a ser verificada (string)
+    //SAIDA: true ou false (boolean)
+    isT(producao: string){
+
+        for(let x = 0; x < this.terminais.length; x++){
+            if(producao === this.terminais[x]){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
 
 }
