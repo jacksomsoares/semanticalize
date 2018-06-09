@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { GrammarComponent } from './grammar/grammar.component';
 import { LanguageComponent } from './language/language.component';
 import { RecognitionTableComponent } from './recognition-table/recognition-table.component';
+import { PredictionTableComponent } from './prediction-table/prediction-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GrammarComponent,
     LanguageComponent,
-    RecognitionTableComponent
+    RecognitionTableComponent,
+    PredictionTableComponent
   ],
   imports: [
     BrowserModule,
