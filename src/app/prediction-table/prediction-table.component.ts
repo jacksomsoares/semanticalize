@@ -33,7 +33,11 @@ export class PredictionTableComponent implements OnInit {
     //this.preditiveTable.mockData();
     this.preditiveTable.generate(this.grammar);
 
-    this.tableHead = ['id', '+', '*', '(', ')', '$'];
+    this.grammar.terminais.forEach(element => {
+      this.tableHead.push(element);
+    });
+    this.tableHead.push("$");
+    //this.tableHead = ['id', '+', '*', '(', ')', '$'];
     this.tableRow = [];        
 
     this.preditiveTable.table.forEach( (value, key) => {
