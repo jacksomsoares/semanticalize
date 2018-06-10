@@ -1,3 +1,6 @@
+import { First } from "./First";
+import { Grammar } from "./Grammar";
+
 export class PreditiveTable {
 
     table: Map<string, Map<string, string>>;
@@ -21,21 +24,19 @@ export class PreditiveTable {
 
     mockData() {
         let tempMap = new Map<string, string>();
-        tempMap.set('id', "TE'");
         tempMap.set('(', "TE'");
+        tempMap.set('id', "TE'");
         this.table.set('E', tempMap);
 
         tempMap = new Map<string, string>();
         tempMap.set('+', "+TE'");
         tempMap.set(')', "&");
         tempMap.set('$', "&");
-
         this.table.set("E'", tempMap);
 
         tempMap = new Map<string, string>();
         tempMap.set('id', "FT'");
         tempMap.set('(', "FT'");
-
         this.table.set("T", tempMap);
 
         tempMap = new Map<string, string>();
@@ -43,13 +44,78 @@ export class PreditiveTable {
         tempMap.set('*', "*FT'");
         tempMap.set(')', "&");
         tempMap.set('$', "&");
-
         this.table.set("T'", tempMap);
 
         tempMap = new Map<string, string>();
         tempMap.set('id', "id");
         tempMap.set('(', "(E)");
-
         this.table.set("F", tempMap);
+    }
+
+    generate(grammar: Grammar) {
+        let FIRSTMAP = new Map<string, string>();
+        FIRSTMAP.set("E", "(,id");
+        FIRSTMAP.set("T", "(,id");
+        FIRSTMAP.set("F", "(,id");
+        FIRSTMAP.set("T'", "*,&");
+        FIRSTMAP.set("E'", "+,&");
+
+        let FOLLOWMAP = new Map<string, string>();
+        FOLLOWMAP.set("E", "),$");
+        FOLLOWMAP.set("E'", "),$");
+        FOLLOWMAP.set("T", "+,),$");
+        FOLLOWMAP.set("T'", "+,),$");
+        FOLLOWMAP.set("F", "+,*,),$");
+
+        let producoes: any;
+        producoes = grammar.producao;
+
+        producoes.forEach((value1, key1) => {
+            let tempMap = new Map<string, string>();
+            let producao: string;
+            let nt: string;
+
+            producao = value1;
+            nt = key1;
+
+            if (producao.indexOf("&") > 1) { // verifica se existe sentença vazia(&) na producao
+                let prod = producao.split("|");
+                for (let index = 0; index < prod.length; index++) {
+                    const element = prod[index];
+                    if (element === "&") {
+                        FOLLOWMAP.forEach((val, key) => {
+                            if (nt === key) {
+                                for (let index = 0; index < val.length; index++) {
+                                    tempMap.set(val[index], "&");
+                                }
+                                return false;
+                            }
+                        });
+                    } else {
+                        FIRSTMAP.forEach((value2, key2) => {
+                            if (key1 === key2) {
+                                let array = value2.split(",");
+                                for (let index = 0; index < array.length; index++) {
+                                    tempMap.set(array[index], producao.split("|")[0]);
+                                }
+                                return false;
+                            }
+                        });
+                    }
+                }
+            } else {
+                FIRSTMAP.forEach((value2, key2) => {
+                    if (key1 === key2) {
+                        let array = value2.split(",");
+                        for (let index = 0; index < array.length; index++) {
+                            const element = array[index];
+                            tempMap.set(element, producao);
+                        }
+                        return false;
+                    }
+                });
+            }
+            this.table.set(nt, tempMap);
+        });
     }
 }
