@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import {Grammar} from '../Classes/Grammar'
 import {PreditiveTable} from '../Classes/PreditiveTable'
+import {RecognitionTable} from '../Classes/RecognitionTable'
 
 @Component({
   selector: 'app-recognition-table',
@@ -7,33 +10,26 @@ import {PreditiveTable} from '../Classes/PreditiveTable'
   styleUrls: ['./recognition-table.component.css']
 })
 export class RecognitionTableComponent implements OnInit {
-  inputRecog: string;
+  @Input() grammar: string;  
+  
+  public inputRecog = "id+id*id";  
+  public tableRow: Array<Array<string>>;
+  private preditiveTable = new PreditiveTable();    
 
-  private preditiveTable = new PreditiveTable();  
-
-  constructor() {    
-    let tempMap = new Map<string, string>();
-    tempMap.set('id', "TE'");
-    tempMap.set('(', "TE'");
-    this.preditiveTable.table.set('E', tempMap);
-    
-    tempMap = new Map<string, string>();
-    tempMap.set('+', "+TE'");
-    tempMap.set(')', "&");
-    tempMap.set('$', "&");
-
-    this.preditiveTable.table.set("E'", tempMap);
-
-    let tempArray = [];
+  constructor() {
    }
 
   ngOnInit() {
   }
 
   reconize(): void {
-    console.log(this.inputRecog);
-    console.log(this.preditiveTable);
-    console.log(this.preditiveTable.table.get('E').get('id'));
+      let grammar = new Grammar(this.grammar);
+      this.preditiveTable = new PreditiveTable();
+      //this.preditiveTable.mockData();
+      this.preditiveTable.generate(grammar);
+      let rcTable = new RecognitionTable();
+      rcTable.reconize(this.inputRecog, this.preditiveTable, grammar);
+      this.tableRow = rcTable.tableRows;
   }
 
 }

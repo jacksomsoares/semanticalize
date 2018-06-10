@@ -27,10 +27,6 @@ export class GrammarComponent implements OnInit {
 
   }
 
-  gerarLing(): void {
-
-  }
-
   //Logs de teste para ver como funciona
   /*
   ngOnChanges() {

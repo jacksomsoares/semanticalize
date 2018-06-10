@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      <h3>Manipulador de Gramatica</h3>
+    <div class="col-6">      
       <div class="form-group">
+        <h3>Manipulador de Gramatica</h3>
         <label for="comment">Insira a Gramatica:</label>
-        <textarea class="form-control txt-grammar" [(ngModel)]="textArea" placeholder="Exemple placeholder bla blu"></textarea>
-        <div class="btn">
-          <div class="row">
-            <div class="col">
-              <button type="button" (click)="reconhecer()" class="btn btn-outline-dark">Reconhecer</button>
-            </div>
-            <div class="col">
-              <button type="button" (click)="gerarSent()" class="btn btn-outline-dark">Gerar Sentenças</button>
-            </div>
-            <div class="col">
-              <button type="button" (click)="gerarLing()" class="btn btn-outline-dark">Gerar Linguagem</button>
-            </div>
-          </div>
+        <textarea class="form-control txt-grammar" [(ngModel)]="textArea" placeholder="Digite a gramatia aqui."></textarea>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="button" (click)="reconhecer()" class="btn btn-outline-dark btn-grammar" disabled>Reconhecer</button>
+          <button type="button" (click)="gerarSent()" class="btn btn-outline-dark btn-grammar" disabled>Gerar Sentenças</button>
         </div>
       </div>
     </div>
     <div class="col-6">
-        <app-language [grammar]=textArea></app-language>        
+      <p>Esta coluna sera usada para colocar outras funcionalidades referente a manipuilação da gramatica, como verificar recurção, &livre, etc...</p>
     </div>
-    
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <app-language [grammar]=textArea></app-language>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>First e Follow</h3>
+  <div class="row">    
     <div class="col-6">
       <app-first [grammar]=textArea></app-first>
     </div>
@@ -31,25 +34,17 @@
     <div class="col-6">
       <app-follow [grammar]=textArea></app-follow>
     </div>
-
-    <div class="col-6">
-      <app-prediction-table></app-prediction-table>
-    </div>   
-    <div class="col-6">
-        <app-recognition-table></app-recognition-table>
-    </div> 
   </div>
-</div>
-<!-- <div class="container">
+
   <div class="row">
     <div class="col-12">
-        <p>Insira a Gramatica</p>
-        <textarea class="txt-grammar" [(ngModel)]="textArea" placeholder="Exemple placeholder bla blu"></textarea>
-    </div>
-    <div class="col">
-        <button (click)="reconhecer()" >Reconhecer</button>
-        <button>Gerar Sentenças</button>
-        <button>Gerar Linguagem</button>
+      <app-prediction-table [grammarInput]=textArea></app-prediction-table>
     </div>
   </div>
-</div> -->
+
+  <div class="row">
+    <div class="col-12">
+      <app-recognition-table [grammar]=textArea></app-recognition-table>
+    </div>
+  </div>
+</div>
