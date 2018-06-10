@@ -1,30 +1,29 @@
 <h3>Tabela de Reconhecimento</h3>
 
-<label for="inputRecognition">Entrada: </label>
-<input id="inputRecognition" type="text" [(ngModel)]="inputRecog">
-<button (click)="reconize()" >Reconhecer</button>
+<div class="form-inline">
+  <div class="form-group mb-2">  
+    <label for="inputRecognition">Entrada: </label>
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <input id="inputRecognition" class="form-control" type="text" [(ngModel)]="inputRecog">
+  </div>
+  <button class="btn mb-2" (click)="reconize()">Reconhecer</button>
+</div>
 
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Pilha</th>
-        <th scope="col">Entrada</th>
-        <th scope="col">Saida</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Pilha</th>
+      <th scope="col">Entrada</th>
+      <th scope="col">Saida</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableRow">
+      <ng-template ngFor let-item [ngForOf]="row" let-f="fist">
+        <th scope="row" *ngIf="f">{{row[0]}}</th>
+        <td>{{item}}</td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

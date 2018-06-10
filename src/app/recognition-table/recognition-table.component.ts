@@ -11,8 +11,9 @@ import {RecognitionTable} from '../Classes/RecognitionTable'
 })
 export class RecognitionTableComponent implements OnInit {
   @Input() grammar: string;  
-  inputRecog: string;  
-
+  
+  public inputRecog = "id+id*id";  
+  public tableRow: Array<Array<string>>;
   private preditiveTable = new PreditiveTable();    
 
   constructor() {
@@ -27,7 +28,7 @@ export class RecognitionTableComponent implements OnInit {
       this.preditiveTable.mockData();
       let rcTable = new RecognitionTable();
       rcTable.reconize(this.inputRecog, this.preditiveTable, grammar);
-      
+      this.tableRow = rcTable.tableRows;
   }
 
 }
