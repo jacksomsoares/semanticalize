@@ -1,4 +1,5 @@
 import { Grammar } from "./Grammar";
+import { RecognitionTable } from "./RecognitionTable";
 
 export class First {
 
@@ -28,7 +29,7 @@ export class First {
         let letra: string;
         let firsts: string = "";
         let producoes: string[];
-
+        
         producoes = grammar.producao.get(sentencaFirst).split("\|");
 
         for(let y = 0; y < producoes.length; y++){ //percorre as produções da gramatica

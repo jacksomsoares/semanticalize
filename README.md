@@ -5,6 +5,14 @@ A -> aAB|aA|&
 B -> b|bB
 
 
+G = { E, D, T, G, F}, { i, +, *, (, ) }, P, E
+P=
+E -> TD
+D -> +TD|&
+T -> FG
+G -> *FG|&
+F -> (E)|i
+
 # Semanticalize
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.

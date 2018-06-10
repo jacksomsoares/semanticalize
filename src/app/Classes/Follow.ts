@@ -15,7 +15,8 @@ export class Follow {
         for(let x = 0; x < grammar.producao.size; x++){ //percore todas as sentenças da gramatica
             
             let key = keys.next().value;
-            this.follow.set(key,this.findFollow(grammar,key));
+            //setando os valores no follow. Foi utilizado replace, spli e join para formatar o valor;
+            this.follow.set(key,this.findFollow(grammar,key).replace(/&/g,"").replace(/,/g,"").split("").join(","));
 
         }
         
@@ -53,9 +54,9 @@ export class Follow {
 
 
                     if(proximaSentenca == "\|" || proximaSentenca == ""){
-                        if(proximaSentenca != key){ //se os simbolos forem iguais o follow é ignorado
+                        if(sentenca != key){ //se os simbolos forem iguais o follow é ignorado
                             fezFollow = true;
-                            //fazer o follow de novo
+                            follows += this.findFollow(grammar,key);
                         }
                     }else
                     if(grammar.isT(proximaSentenca)){//testa se a proxima sentença é um terminal
@@ -66,17 +67,16 @@ export class Follow {
                     }
 
                     if(grammar.producao.get(key).includes("&") && !fezFollow){
-                        //fazer o follow de novo
+                        if(sentenca != key){ //se os simbolos forem iguais o follow é ignorado
+                            fezFollow = true;
+                            follows += this.findFollow(grammar,key);
+                        }
                     }
                         
-                    
-                    
                 }
 
             }
 
-           
-            
         }
         if(producaoIniciao){
             producaoIniciao = false;
