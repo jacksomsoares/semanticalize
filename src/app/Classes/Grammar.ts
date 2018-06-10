@@ -19,7 +19,8 @@ export class Grammar {
 
         let auxLinha = auxGrammar.split(/\s/);        
 
-        let aux = auxLinha[0].replace(/\w=|[(]|[)]/g, "");
+        //let aux = auxLinha[0].replace(/\w=|[(]|[)]/g, ""); Esta regEx buga quando usa (,), como NT
+        let aux = auxLinha[0].replace(/\w=[(]|[)]$/g, "");
 
         let aux2: string[] = aux.split(",");
         this.inicioProd = aux2[aux2.length - 1];

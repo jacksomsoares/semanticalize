@@ -9,7 +9,7 @@ export class PreditiveTable {
         Map< NTerminal Map<terminal, value >>
         Map< E , Map< id, E -> TE >>
 
-        Using this structure we cant simply acess data like
+        Using this structure we can simply acess data like
         Map.get(Nterminal).get(Terminal) \\Will return the exacly value of that combination of NT/T
         Map.get(E).get(id) \\will return E -> TE
 
