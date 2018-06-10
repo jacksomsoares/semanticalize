@@ -135,6 +135,8 @@ export class Grammar {
         return sentencas;
     }
 
+    //Esta com bug nessa instrução: sentenca = sentenca.replace(nt, aux[Math.floor(Math.random() * (aux.length - 0)) + 0]);
+    //O que acontece é que ao executar um replace em uma produção com Nt duplo, vide E', a aspa é classificada como se fosse um unico item.
     gerarLinguagem(amostras: Array<string>): string {
 
         let listaLinguagens = new Array<Linguagem>();
