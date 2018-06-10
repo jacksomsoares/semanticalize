@@ -353,7 +353,7 @@ export class Grammar {
         }
     }
 
-    //função para achar se a produção é um não terminal
+    //função para achar se a sentença é um não terminal
     //ENTRADA: letra a ser verificada (string)
     //SAIDA: true ou false (boolean)
     isNT(producao: string){
@@ -368,7 +368,7 @@ export class Grammar {
 
     }
 
-    //função para achar se a produção é um terminal
+    //função para achar se a senteça é um terminal
     //ENTRADA: letra a ser verificada (string)
     //SAIDA: true ou false (boolean)
     isT(producao: string){

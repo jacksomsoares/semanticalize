@@ -20,7 +20,7 @@ export class First {
         
     }
 
-    //função que encontra o first da sentença (revursiva)
+    //função que encontra o first da sentença
     //ENTRADA: gramatica (Grammar), sentença para encontrar o first (string)
     //SAIDA: todos os firsts da sentença separados por vírgula (string)
     findFirst(grammar: Grammar, sentencaFirst: string){
@@ -47,6 +47,8 @@ export class First {
 
     }
 
+    //Função responsável por formatar os dados para exibir na tela
+    //SAIDA: firts formatados (string)
     exibirFirsts(){
 
         let firstText: string = ""; 
