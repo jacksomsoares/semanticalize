@@ -107,9 +107,17 @@ export class PreditiveTable {
                 FIRSTMAP.forEach((value2, key2) => {
                     if (key1 === key2) {
                         let array = value2.split(",");
+                        let aux = producao.split("|");
                         for (let index = 0; index < array.length; index++) {
                             const element = array[index];
-                            tempMap.set(element, producao);
+                            if (aux.length > 1) {
+                                for (let i = index; i < aux.length; i++) {
+                                    tempMap.set(element, aux[i]);
+                                    i=aux.length;
+                                }
+                            } else {
+                                tempMap.set(element, producao);
+                            }
                         }
                         return false;
                     }
