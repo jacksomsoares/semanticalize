@@ -25,7 +25,8 @@ export class RecognitionTableComponent implements OnInit {
   reconize(): void {
       let grammar = new Grammar(this.grammar);
       this.preditiveTable = new PreditiveTable();
-      this.preditiveTable.mockData();
+      //this.preditiveTable.mockData();
+      this.preditiveTable.generate(grammar);
       let rcTable = new RecognitionTable();
       rcTable.reconize(this.inputRecog, this.preditiveTable, grammar);
       this.tableRow = rcTable.tableRows;

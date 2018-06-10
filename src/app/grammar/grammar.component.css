@@ -5,3 +5,8 @@
 .container {
   margin-top: 8rem;
 }
+
+.btn-grammar {
+  margin: 0px 5px;
+  min-width: 150px;
+}
