@@ -26,6 +26,7 @@ export class PredictionTableComponent implements OnInit {
   }
 
   buildTable(){
+    this.tableHead = [];
     this.grammar = new Grammar(this.grammarInput);
     this.preditiveTable = new PreditiveTable();
     //this.first = new First(this.grammar);
