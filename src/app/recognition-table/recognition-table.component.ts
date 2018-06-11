@@ -14,7 +14,7 @@ import { Follow } from '../Classes/Follow';
 export class RecognitionTableComponent implements OnInit {
   @Input() grammar: string;  
   
-  public inputRecog = "id+id*id"; 
+  public inputRecog = "i+i*i"; 
   public tableRow: Array<Array<string>>;
   private preditiveTable = new PreditiveTable();    
 

@@ -9,7 +9,14 @@ import { Grammar } from '../Classes/Grammar';
 })
 export class GrammarComponent implements OnInit {
   grammar: Grammar;
-  textArea: string;
+  textArea: string = 
+  `G = ({ E, D, T, G, F}, { i, +, *, (, ) }, P, E ) 
+  P=
+  E -> TD
+  D -> +TD|&
+  T -> FG
+  G -> *FG|&
+  F -> (E)|i`;
 
   constructor() {
     //console.log('log constructor');
