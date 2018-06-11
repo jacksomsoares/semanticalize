@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Grammar} from '../Classes/Grammar';
 import {PreditiveTable} from '../Classes/PreditiveTable';
 import { First } from '../Classes/First';
+import { Follow } from '../Classes/Follow';
 
 @Component({
   selector: 'app-prediction-table',
@@ -11,7 +12,6 @@ import { First } from '../Classes/First';
 export class PredictionTableComponent implements OnInit {
   @Input() grammarInput: string;
   public grammar: Grammar;
-  public first: First;
   public preditiveTable: PreditiveTable;
   public tableHead: Array<string>;
   public tableRow: Array<Array<string>>;
@@ -19,7 +19,6 @@ export class PredictionTableComponent implements OnInit {
   constructor() {
     this.tableHead = [];
     this.tableRow = [];
-    
    }
 
   ngOnInit() {
@@ -29,10 +28,11 @@ export class PredictionTableComponent implements OnInit {
     this.tableHead = [];
     this.grammar = new Grammar(this.grammarInput);
     this.preditiveTable = new PreditiveTable();
-    //this.first = new First(this.grammar);
+    const first = new First(this.grammar);
+    const follow = new Follow(this.grammar);
     
     //this.preditiveTable.mockData();
-    this.preditiveTable.generate(this.grammar);
+    this.preditiveTable.generate(this.grammar, first, follow);
 
     this.grammar.terminais.forEach(element => {
       this.tableHead.push(element);
