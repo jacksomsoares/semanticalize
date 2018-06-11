@@ -1,5 +1,6 @@
 import { First } from "./First";
 import { Grammar } from "./Grammar";
+import { Follow } from "./Follow";
 
 export class PreditiveTable {
 
@@ -52,20 +53,20 @@ export class PreditiveTable {
         this.table.set("F", tempMap);
     }
 
-    generate(grammar: Grammar) {
-        let FIRSTMAP = new Map<string, string>();
-        FIRSTMAP.set("E", "(,id");
-        FIRSTMAP.set("T", "(,id");
-        FIRSTMAP.set("F", "(,id");
-        FIRSTMAP.set("T'", "*,&");
-        FIRSTMAP.set("E'", "+,&");
+    generate(grammar: Grammar, FIRSTMAP: First, FOLLOWMAP: Follow) {
+        // let FIRSTMAP = new Map<string, string>();
+        // FIRSTMAP.set("E", "(,id");
+        // FIRSTMAP.set("T", "(,id");
+        // FIRSTMAP.set("F", "(,id");
+        // FIRSTMAP.set("T'", "*,&");
+        // FIRSTMAP.set("E'", "+,&");
 
-        let FOLLOWMAP = new Map<string, string>();
-        FOLLOWMAP.set("E", "),$");
-        FOLLOWMAP.set("E'", "),$");
-        FOLLOWMAP.set("T", "+,),$");
-        FOLLOWMAP.set("T'", "+,),$");
-        FOLLOWMAP.set("F", "+,*,),$");
+        // let FOLLOWMAP = new Map<string, string>();
+        // FOLLOWMAP.set("E", "),$");
+        // FOLLOWMAP.set("E'", "),$");
+        // FOLLOWMAP.set("T", "+,),$");
+        // FOLLOWMAP.set("T'", "+,),$");
+        // FOLLOWMAP.set("F", "+,*,),$");
 
         let producoes: any;
         producoes = grammar.producao;
@@ -83,7 +84,7 @@ export class PreditiveTable {
                 for (let index = 0; index < prod.length; index++) {
                     const element = prod[index];
                     if (element === "&") {
-                        FOLLOWMAP.forEach((val, key) => {
+                        FOLLOWMAP.follow.forEach((val, key) => {
                             if (nt === key) {
                                 for (let index = 0; index < val.length; index++) {
                                     tempMap.set(val[index], "&");
@@ -92,7 +93,7 @@ export class PreditiveTable {
                             }
                         });
                     } else {
-                        FIRSTMAP.forEach((value2, key2) => {
+                        FIRSTMAP.first.forEach((value2, key2) => {
                             if (key1 === key2) {
                                 let array = value2.split(",");
                                 for (let index = 0; index < array.length; index++) {
@@ -104,7 +105,7 @@ export class PreditiveTable {
                     }
                 }
             } else {
-                FIRSTMAP.forEach((value2, key2) => {
+                FIRSTMAP.first.forEach((value2, key2) => {
                     if (key1 === key2) {
                         let array = value2.split(",");
                         let aux = producao.split("|");
