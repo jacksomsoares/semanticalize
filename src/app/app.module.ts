@@ -17,6 +17,8 @@ import { APOPasso4Component } from './apopasso4/apopasso4.component';
 import { APOPasso5Component } from './apopasso5/apopasso5.component';
 import { APOPasso6Component } from './apopasso6/apopasso6.component';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { APOPasso6Component } from './apopasso6/apopasso6.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
