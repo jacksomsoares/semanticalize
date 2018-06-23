@@ -10,6 +10,8 @@ import { PredictionTableComponent } from './prediction-table/prediction-table.co
 import { FirstComponent } from './first/first.component';
 import { FollowComponent } from './follow/follow.component';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { FollowComponent } from './follow/follow.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
