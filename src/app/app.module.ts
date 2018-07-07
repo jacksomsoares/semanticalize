@@ -13,10 +13,6 @@ import { AnalisePrecedenciaOperadoresComponent } from './analise-precedencia-ope
 import { APOPasso1Component } from './apopasso1/apopasso1.component';
 import { APOPasso2Component } from './apopasso2/apopasso2.component';
 import { APOPasso3Component } from './apopasso3/apopasso3.component';
-import { APOPasso4Component } from './apopasso4/apopasso4.component';
-import { APOPasso5Component } from './apopasso5/apopasso5.component';
-import { APOPasso6Component } from './apopasso6/apopasso6.component';
-
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
@@ -31,10 +27,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AnalisePrecedenciaOperadoresComponent,
     APOPasso1Component,
     APOPasso2Component,
-    APOPasso3Component,
-    APOPasso4Component,
-    APOPasso5Component,
-    APOPasso6Component
+    APOPasso3Component
   ],
   imports: [
     BrowserModule,
