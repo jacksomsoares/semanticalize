@@ -1,3 +1,62 @@
-<p>
-  analise-precedencia-operadores works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <h3>Manipulador de Gramatica</h3>
+        <label for="comment">Insira a Gramatica:</label>
+        <textarea class="form-control txt-grammar" [(ngModel)]="textArea" placeholder="Digite a gramatia aqui."></textarea>
+      </div>
+    </div>
+    <div class="col-6">
+      <h3>Manual</h3>
+      <p>O manual pode ser acessado neste link:
+        <br>
+        <a href="https://docs.google.com/document/d/1M_eK21grBoxN4A99VNgBBrAJE_eE1RU1nw9V67GBqQc/edit?usp=sharing">https://docs.google.com/document/d/1M_eK21grBoxN4A99VNgBBrAJE_eE1RU1nw9V67GBqQc/edit?usp=sharing</a>
+      </p>
+    </div>
+  </div>
+  <hr>
+
+  <h4>Geração dos primeiros e últimos relacionados aos não terminais</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso1></app-apopasso1>
+    </div>
+  </div>
+
+  <h4>Menor precedência</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso2></app-apopasso2>
+    </div>
+  </div>
+
+  <h4>Maior precedência</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso3></app-apopasso3>
+    </div>
+  </div>
+
+  <h4>Precedência do marcador</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso4></app-apopasso4>
+    </div>
+  </div>
+
+  <h4>Tabela gerada a partir das definições</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso5></app-apopasso5>
+    </div>
+  </div>
+
+  <h4>Reconhecimento de entrada</h4>
+  <div class="row">
+    <div class="col-12">
+      <app-apopasso6></app-apopasso6>
+    </div>
+  </div>
+
+</div>
