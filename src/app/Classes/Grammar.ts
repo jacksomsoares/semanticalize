@@ -40,8 +40,7 @@ export class Grammar {
             if (s.includes("->")){
                 let temp = s.split("->");
                 this.producao.set(temp[0], temp[1]);
-            }            
-
+            }
         });
         //this.producao = prodBuilder;
 
