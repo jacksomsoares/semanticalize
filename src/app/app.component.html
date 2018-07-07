@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="position: relative">
   <a class="navbar-brand" href="#">
     <img src="https://unisc.br/images/unisc_transp.png" alt="logo">
   </a>
@@ -13,12 +13,20 @@
   </div>
 </nav>
 
-<!-- <div class="container" style="text-align:center">
-  <h1>
-    Trabalho Analise Semantica - Compiladores
-  </h1>
-  <h2>Andra Konza</h2>  
-</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">        
+        <a class="nav-link" routerLink="analise-preditiva">Analise Preditiva <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="precedencia-operadores">Precedência de Operadores</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<app-grammar></app-grammar>
+<router-outlet></router-outlet>
+
+
 
