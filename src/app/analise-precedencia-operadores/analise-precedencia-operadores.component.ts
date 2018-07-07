@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalisePrecedenciaOperadoresComponent implements OnInit {
 
+  textArea: String =
+    `E -> E / T | T 
+T -> T & F | F
+F -> (E) | id`;
+
   constructor() { }
 
   ngOnInit() {
