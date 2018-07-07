@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="position: relative">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="/">
     <img src="https://unisc.br/images/unisc_transp.png" alt="logo">
   </a>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" routerLink="/">
           <strong>Trabalho Análise Semantica - Compiladores - Profa. Dra. Andrea Konzen</strong>
         </a>
       </li>
@@ -16,8 +16,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <li class="nav-item">        
-        <a class="nav-link" routerLink="analise-preditiva">Analise Preditiva <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="analise-preditiva">Analise Preditiva
+          <span class="sr-only">(current)</span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="precedencia-operadores">Precedência de Operadores</a>
@@ -26,7 +28,16 @@
   </div>
 </nav>
 
+<div *ngIf="checkIfHomePage()" class="containter">
+  <div class="row">
+    <div class="col-12">
+      <h3>Manual</h3>
+      <p>O manual pode ser acessado neste link:
+        <br>
+        <a href="https://docs.google.com/document/d/1M_eK21grBoxN4A99VNgBBrAJE_eE1RU1nw9V67GBqQc/edit?usp=sharing">https://docs.google.com/document/d/1M_eK21grBoxN4A99VNgBBrAJE_eE1RU1nw9V67GBqQc/edit?usp=sharing</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
-
-
-

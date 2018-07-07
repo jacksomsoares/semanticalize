@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AnalisePrecedenciaOperadoresComponent implements OnInit {
 
   textArea: String =
-    `E -> E / T | T 
-T -> T & F | F
-F -> (E) | id`;
+    "G = ({ E, T, F}, { /, id, (, ) }, P, E )\n" +
+    "p=\n" +
+    "E -> E / T | T\n" +
+    "T -> T & F | F\n" +
+    "F -> (E) | id";
 
   constructor() { }
 
