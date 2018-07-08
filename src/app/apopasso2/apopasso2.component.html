@@ -1,16 +1,17 @@
 <button class="btn btn-outline-dark" (click)="doStepTwo()" >Passo 2</button>
-<p *ngFor="let row of tableRow" > {{row}} </p>
-<!-- <table class="table">
+<!-- <p *ngFor="let row of tableRow" > {{row}} </p> -->
+<table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col" *ngFor="let header of tableHeader">{{header}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>x</th>
-        <td>x</td>
-        <td>x</td>
-      </tr>
+      <td *ngFor="let row of tableRow">
+        <ng-template ngFor let-item [ngForOf]="row" let-f="fist">        
+          <tr scope="row" *ngIf="f">{{row[0]}}</tr>
+          <tr>{{item}}</tr> 
+        </ng-template>
+      </td>
     </tbody>
-  </table> -->
+  </table>
