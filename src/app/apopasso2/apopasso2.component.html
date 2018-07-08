@@ -1,5 +1,6 @@
 <button class="btn btn-outline-dark" (click)="doStepTwo()" >Passo 2</button>
-<table class="table">
+<p *ngFor="let row of tableRow" > {{row}} </p>
+<!-- <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col" *ngFor="let header of tableHeader">{{header}}</th>
@@ -12,4 +13,4 @@
         <td>x</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->

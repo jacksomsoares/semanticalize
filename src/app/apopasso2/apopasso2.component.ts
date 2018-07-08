@@ -11,6 +11,7 @@ import { OperatorPrecedenceParser } from '../Classes/operator-precedence-parser'
 export class APOPasso2Component implements OnInit {
   @Input() grammar: string;
   public tableHeader: string[];
+  public tableRow: string[];
   constructor() { }
 
   doStepTwo(){
@@ -23,6 +24,7 @@ export class APOPasso2Component implements OnInit {
 
     stepTwo.findTNT(grammar);
     this.tableHeader = stepTwo.listaTNT;
+    this.tableRow = [];
 
     let maior: number = 0;
 
@@ -40,11 +42,16 @@ export class APOPasso2Component implements OnInit {
 
       let precedencia = this.tableHeader[x].toString().split("");
       
-      let letra = stepOne.leading.get(precedencia[1]).toString().split(",");
+      let letra = stepOne.leading.get(precedencia[1]).toString();
+      
+      let stringLinha = this.tableHeader[x].toString() + " -> " + precedencia[0].toString() + "<" + letra.replace(/,/g,", "+precedencia[0].toString() + "<") 
+      console.log(stringLinha);
+      this.tableRow.push(stringLinha);
 
       for(let j = 0; j < letra.length; j++){
-        // let precedencias = letra[j].toString().split("");
-        console.log(letra[j]);
+        
+        // let precedencias = letra[j].toString().split("");  
+        // console.log(letra[j]);
       }
 
       //Mostrar a tabela deitada
