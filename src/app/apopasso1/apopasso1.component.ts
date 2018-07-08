@@ -20,6 +20,7 @@ export class APOPasso1Component implements OnInit {
   doStepOne(){
     let grammar = new GrammarV2(this.grammar);
     let stepOne = new OperatorPrecedenceParser();
+    stepOne.grammar = grammar;
 
     stepOne.FirstStep(grammar);
     
@@ -29,7 +30,9 @@ export class APOPasso1Component implements OnInit {
       obj.first = stepOne.leading.get(nt).toString();
       obj.last = stepOne.trailing.get(nt).toString();
       this.tableRow.push(obj);
-    }    
+    }
+    
+    stepOne.RecognitionTable();
   }
 
 }
