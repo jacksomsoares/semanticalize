@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GrammarV2 } from '../Classes/GrammarV2';
 import { MenorPrecedencia } from '../Classes/menor-precedencia';
 import { OperatorPrecedenceParser } from '../Classes/operator-precedence-parser';
+import { MaiorPrecedencia } from '../Classes/maior-precedencia';
 
 @Component({
   selector: 'app-apopasso2',
@@ -11,6 +12,8 @@ import { OperatorPrecedenceParser } from '../Classes/operator-precedence-parser'
 export class APOPasso2Component implements OnInit {
   @Input() grammar: string;
   public tableHeader: string[];
+  public tableHeaderP3: string[];
+  public tableRowP3: string[];
   public tableRow: Array<Array<string>>;
   public lineprecedencia: Map<String, Array<string>>;
   constructor() {
@@ -73,6 +76,7 @@ export class APOPasso2Component implements OnInit {
 
     }
 
+
     for (let x = 0; x < this.tableHeader.length; x++) {
       let precedencia = this.tableHeader[x].toString().split("");
       let tableLine = [];
@@ -89,8 +93,51 @@ export class APOPasso2Component implements OnInit {
 
   public getMaior() {
 
+    
+  }
 
+  doStepTree(){
+    let grammar = new GrammarV2(this.grammar);
+    let stepTree = new MaiorPrecedencia();
+    let stepOne = new OperatorPrecedenceParser();
 
+    stepOne.FirstStep(grammar);
+
+    stepTree.findNTT(grammar);
+    this.tableHeaderP3 = stepTree.listaNTT;
+    this.tableRowP3 = [];
+
+    let maior: number = 0;
+
+    for(let x = 0; x < this.tableHeaderP3.length; x++){
+      
+      let a = stepOne.trailing.get(this.tableHeaderP3[x].toString().split("")[0]).toString().split(",");
+
+      if(a.length > maior){
+        maior = a.length;
+      }
+
+    }
+
+    for(let x = 0; x < this.tableHeaderP3.length; x++){
+
+      let precedencia = this.tableHeaderP3[x].toString().split("");
+      
+      let letra = stepOne.leading.get(precedencia[0]).toString();
+      
+      let stringLinha = this.tableHeaderP3[x].toString() + " -> " + precedencia[1].toString() + "<" + letra.replace(/,/g,", "+precedencia[1].toString() + "<") 
+      console.log(stringLinha);
+      this.tableRowP3.push(stringLinha);
+
+      for(let j = 0; j < letra.length; j++){
+        
+        // let precedencias = letra[j].toString().split("");  
+        // console.log(letra[j]);
+      }
+
+      //Mostrar a tabela deitada
+
+    }
   }
 
   ngOnInit() {

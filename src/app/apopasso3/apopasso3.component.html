@@ -1,3 +1,26 @@
 <p>
   apopasso3 works!
 </p>
+<button class="btn btn-outline-dark" (click)="recognize()" >Reconhecer</button>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th class="text-center" scope="col">Passo</th>
+      <th class="text-center" scope="col">Pilha</th>
+      <th class="text-center" scope="col">Relação</th>
+      <th class="text-center" scope="col">Entrada</th>
+      <th class="text-center" scope="col">Handle</th>
+      <th class="text-center" scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableRow; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{row.stack}}</td>
+      <td class="text-center">{{row.relation}}</td>
+      <td class="text-right">{{row.input}}</td>
+      <td class="text-center">{{row.handle}}</td>
+      <td>{{row.action}}</td>
+    </tr>
+  </tbody>
+</table>
