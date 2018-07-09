@@ -1,16 +1,32 @@
-<button class="btn btn-outline-dark" (click)="doStepTwo()" >Passo 2</button>
+<button class="btn btn-outline-dark" (click)="doStepTwo()">Passo 2</button>
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col" *ngFor="let header of tableHeader">{{header}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <td *ngFor="let row of tableRow">
-        <ng-template ngFor let-item [ngForOf]="row" let-f="fist">        
-          <tr scope="row" *ngIf="f">{{row[0]}}</tr>
-          <tr>{{item}}</tr> 
-        </ng-template>
-      </td>
-    </tbody>
-  </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" *ngFor="let header of tableHeaderP2">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td *ngFor="let row of tableRowP2">
+      <ng-template ngFor let-item [ngForOf]="row" let-f="fist">
+        <tr scope="row" *ngIf="f">{{row[0]}}</tr>
+        <tr>{{item}}</tr>
+      </ng-template>
+    </td>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" *ngFor="let header of tableHeaderP3">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td *ngFor="let row of tableRowP3">
+      <ng-template ngFor let-item [ngForOf]="row" let-f="fist">
+        <tr scope="col" *ngIf="f">{{row[0]}}</tr>
+        <tr>{{item}}</tr>
+      </ng-template>
+    </td>
+  </tbody>
+</table>

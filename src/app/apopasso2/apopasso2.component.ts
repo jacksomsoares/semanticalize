@@ -11,13 +11,15 @@ import { MaiorPrecedencia } from '../Classes/maior-precedencia';
 })
 export class APOPasso2Component implements OnInit {
   @Input() grammar: string;
-  public tableHeader: string[];
+  public tableHeaderP2: string[];
   public tableHeaderP3: string[];
-  public tableRowP3: string[];
-  public tableRow: Array<Array<string>>;
-  public lineprecedencia: Map<String, Array<string>>;
+  public tableRowP2: Array<Array<string>>;
+  public tableRowP3: Array<Array<string>>;
+  public menorprecedencia: Map<String, Array<string>>;
+  public maiorprecedencia: Map<String, Array<string>>;
   constructor() {
-    this.lineprecedencia = new Map<String, Array<string>>;
+    this.menorprecedencia = new Map<String, Array<string>>();
+    this.maiorprecedencia = new Map<String, Array<string>>();
   }
 
   doStepTwo() {
@@ -29,20 +31,8 @@ export class APOPasso2Component implements OnInit {
     stepOne.FirstStep(grammar);
 
     stepTwo.findTNT(grammar);
-    this.tableHeader = stepTwo.listaTNT;
-    this.tableRow = [];
-
-    let maior: number = 0;
-
-    for (let x = 0; x < this.tableHeader.length; x++) {
-
-      let a = stepOne.leading.get(this.tableHeader[x].toString().split("")[1]).toString().split(",");
-
-      if (a.length > maior) {
-        maior = a.length;
-      }
-
-    }
+    this.tableHeaderP2 = stepTwo.listaTNT;
+    this.tableRowP2 = [];
 
     // let temp1 = new Array<string>;
     // temp1.push("/<&");
@@ -62,41 +52,38 @@ export class APOPasso2Component implements OnInit {
     // temp3.push("( < id");
     // this.lineprecedencia.set('E', temp3);
 
-    for (let x = 0; x < this.tableHeader.length; x++) {
-      let precedencia = this.tableHeader[x].toString().split("");
-      let temp3 = new Array<string>;
+    for (let x = 0; x < this.tableHeaderP2.length; x++) {
+      let precedencia = this.tableHeaderP2[x].toString().split("");
+      let precedence_aux = this.tableHeaderP2[x];
+      let temp3 = new Array<string>();
       let letra = stepOne.leading.get(precedencia[1]).toString();
 
-      const array = letra.split(",");
+      const array = letra.split(',');
       for (let x = 0; x < array.length; x++) {
-        const string_aux = precedencia[0].toString() + "<" + array[x];
+        const string_aux = precedencia[0].toString() + ' < ' + array[x];
         temp3.push(string_aux);
       }
-      this.lineprecedencia.set(precedencia[1], temp3);
+      this.menorprecedencia.set(precedence_aux, temp3);
 
     }
 
-
-    for (let x = 0; x < this.tableHeader.length; x++) {
-      let precedencia = this.tableHeader[x].toString().split("");
-      let tableLine = [];
-      this.lineprecedencia.forEach((value, key) => {
-        if (precedencia[1] === key) {
+    for (let x = 0; x < this.tableHeaderP2.length; x++) {
+      let precedencia = this.tableHeaderP2[x];
+      let tablerow = [];
+      this.menorprecedencia.forEach((value, key) => {
+        if (precedencia === key) {
           for (let x = 0; x < value.length; x++) {
-            tableLine.push(value[x]);
+            tablerow.push(value[x]);
           }
         }
       });
-      this.tableRow.push(tableLine);
+      this.tableRowP2.push(tablerow);
     }
+    this.doStepTree();
   }
 
-  public getMaior() {
+  doStepTree() {
 
-    
-  }
-
-  doStepTree(){
     let grammar = new GrammarV2(this.grammar);
     let stepTree = new MaiorPrecedencia();
     let stepOne = new OperatorPrecedenceParser();
@@ -107,36 +94,33 @@ export class APOPasso2Component implements OnInit {
     this.tableHeaderP3 = stepTree.listaNTT;
     this.tableRowP3 = [];
 
-    let maior: number = 0;
+    for (let x = 0; x < this.tableHeaderP3.length; x++) {
+      let precedencia = this.tableHeaderP3[x].toString().split("");
+      let precedence_aux = this.tableHeaderP3[x];
 
-    for(let x = 0; x < this.tableHeaderP3.length; x++){
-      
-      let a = stepOne.trailing.get(this.tableHeaderP3[x].toString().split("")[0]).toString().split(",");
+      let temp3 = new Array<string>();
+      let letra = stepOne.trailing.get(precedencia[0]).toString();
 
-      if(a.length > maior){
-        maior = a.length;
+      const array = letra.split(',');
+      for (let x = 0; x < array.length; x++) {
+        const string_aux = array[x] + ' > ' + precedencia[1];
+        temp3.push(string_aux);
       }
+      this.maiorprecedencia.set(precedence_aux, temp3);
 
     }
 
-    for(let x = 0; x < this.tableHeaderP3.length; x++){
-
-      let precedencia = this.tableHeaderP3[x].toString().split("");
-      
-      let letra = stepOne.leading.get(precedencia[0]).toString();
-      
-      let stringLinha = this.tableHeaderP3[x].toString() + " -> " + precedencia[1].toString() + "<" + letra.replace(/,/g,", "+precedencia[1].toString() + "<") 
-      console.log(stringLinha);
-      this.tableRowP3.push(stringLinha);
-
-      for(let j = 0; j < letra.length; j++){
-        
-        // let precedencias = letra[j].toString().split("");  
-        // console.log(letra[j]);
-      }
-
-      //Mostrar a tabela deitada
-
+    for (let x = 0; x < this.tableHeaderP3.length; x++) {
+      let precedencia = this.tableHeaderP3[x];
+      let tablerow = [];
+      this.maiorprecedencia.forEach((value, key) => {
+        if (precedencia === key) {
+          for (let x = 0; x < value.length; x++) {
+            tablerow.push(value[x]);
+          }
+        }
+      });
+      this.tableRowP3.push(tablerow);
     }
   }
 
