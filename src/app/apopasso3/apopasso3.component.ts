@@ -10,6 +10,7 @@ import {OperatorPrecedenceParser} from '../Classes/operator-precedence-parser';
 })
 export class APOPasso3Component implements OnInit {
   @Input() grammar: string;
+  public inputRecog = "id&id/id"; 
   public tableRow = Array<{stack: string, relation: string, input: string, handle: string, action: string}>();
 
   constructor() { }
