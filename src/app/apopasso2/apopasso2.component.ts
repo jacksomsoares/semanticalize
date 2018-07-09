@@ -15,11 +15,18 @@ export class APOPasso2Component implements OnInit {
   public tableHeaderP3: string[];
   public tableRowP2: Array<Array<string>>;
   public tableRowP3: Array<Array<string>>;
+  public tableRowMaiorMarcador: Array<Array<string>>;
+  public tableRowMenorMarcador: Array<Array<string>>;
   public menorprecedencia: Map<String, Array<string>>;
   public maiorprecedencia: Map<String, Array<string>>;
   constructor() {
     this.menorprecedencia = new Map<String, Array<string>>();
     this.maiorprecedencia = new Map<String, Array<string>>();
+  }
+
+  doLoad() {
+    this.doStepTwo();
+    this.doStepTree();
   }
 
   doStepTwo() {
@@ -33,24 +40,7 @@ export class APOPasso2Component implements OnInit {
     stepTwo.findTNT(grammar);
     this.tableHeaderP2 = stepTwo.listaTNT;
     this.tableRowP2 = [];
-
-    // let temp1 = new Array<string>;
-    // temp1.push("/<&");
-    // temp1.push("/<(");
-    // temp1.push("/<id");
-    // this.lineprecedencia.set('T', temp1);
-
-    // let temp2 = new Array<string>;
-    // temp2.push("& < (");
-    // temp2.push("& < id");
-    // this.lineprecedencia.set('F', temp2);
-
-    // let temp3 = new Array<string>;
-    // temp3.push("( < /");
-    // temp3.push("( < & ");
-    // temp3.push("( < (");
-    // temp3.push("( < id");
-    // this.lineprecedencia.set('E', temp3);
+    this.tableRowMenorMarcador = [];
 
     for (let x = 0; x < this.tableHeaderP2.length; x++) {
       let precedencia = this.tableHeaderP2[x].toString().split("");
@@ -59,8 +49,14 @@ export class APOPasso2Component implements OnInit {
       let letra = stepOne.leading.get(precedencia[1]).toString();
 
       const array = letra.split(',');
-      for (let x = 0; x < array.length; x++) {
-        const string_aux = precedencia[0].toString() + ' < ' + array[x];
+      for (let y = 0; y < array.length; y++) {
+        if (x === this.tableHeaderP2.length - 1) { //save precedencia marcador menor
+          const str = new Array<string>();
+          str.push('$' + ' < ' + array[y]);
+          this.tableRowMenorMarcador.push(str);
+        }
+
+        const string_aux = precedencia[0].toString() + ' < ' + array[y];
         temp3.push(string_aux);
       }
       this.menorprecedencia.set(precedence_aux, temp3);
@@ -79,7 +75,7 @@ export class APOPasso2Component implements OnInit {
       });
       this.tableRowP2.push(tablerow);
     }
-    this.doStepTree();
+
   }
 
   doStepTree() {
@@ -93,6 +89,9 @@ export class APOPasso2Component implements OnInit {
     stepTree.findNTT(grammar);
     this.tableHeaderP3 = stepTree.listaNTT;
     this.tableRowP3 = [];
+    this.tableRowMaiorMarcador = [];
+
+
 
     for (let x = 0; x < this.tableHeaderP3.length; x++) {
       let precedencia = this.tableHeaderP3[x].toString().split("");
@@ -102,8 +101,13 @@ export class APOPasso2Component implements OnInit {
       let letra = stepOne.trailing.get(precedencia[0]).toString();
 
       const array = letra.split(',');
-      for (let x = 0; x < array.length; x++) {
-        const string_aux = array[x] + ' > ' + precedencia[1];
+      for (let y = 0; y < array.length; y++) {
+        if (x === 0) { //save precedencia marcador maior
+          const str = new Array<string>();
+          str.push(array[y] + ' > ' + '$');
+          this.tableRowMaiorMarcador.push(str);
+        }
+        const string_aux = array[y] + ' > ' + precedencia[1];
         temp3.push(string_aux);
       }
       this.maiorprecedencia.set(precedence_aux, temp3);
@@ -125,6 +129,7 @@ export class APOPasso2Component implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

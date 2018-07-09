@@ -1,4 +1,4 @@
-<button class="btn btn-outline-dark" (click)="doStepTwo()">Passo 2</button>
+<button class="btn btn-outline-dark" (click)="doLoad()">Passo 2</button>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -30,3 +30,41 @@
     </td>
   </tbody>
 </table>
+
+<h4 *ngIf="tableRowMaiorMarcador.length > 0">Precedência do marcador</h4>
+<div class="row">
+  <div class="col-6">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" *ngIf="tableRowMaiorMarcador.length > 0"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableRowMaiorMarcador">
+          <ng-template ngFor let-item [ngForOf]="row" let-f="fist">
+            <tr scope="col" *ngIf="f">{{row[0]}}</tr>
+            <td>{{item}}</td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" *ngIf="tableRowMenorMarcador.length > 0"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableRowMenorMarcador">
+          <ng-template ngFor let-item [ngForOf]="row" let-f="fist">
+            <tr scope="col" *ngIf="f">{{row[0]}}</tr>
+            <td>{{item}}</td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
