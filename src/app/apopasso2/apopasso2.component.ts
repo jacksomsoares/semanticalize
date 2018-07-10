@@ -23,6 +23,8 @@ export class APOPasso2Component implements OnInit {
   public menorprecedencia: Map<String, Array<string>>;
   public maiorprecedencia: Map<String, Array<string>>;
   constructor() {
+    this.tableRowMaiorMarcador = [];
+    this.tableRowMenorMarcador = [];
     this.menorprecedencia = new Map<String, Array<string>>();
     this.maiorprecedencia = new Map<String, Array<string>>();
     this.tableHead = [];
