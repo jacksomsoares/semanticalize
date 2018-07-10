@@ -68,3 +68,22 @@
     </table>
   </div>
 </div>
+
+<h4 *ngIf="tableHead.length > 0">Tabela</h4>
+<table *ngIf="tableHead.length > 0" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th *ngFor="let nt of tableHead" scope="col">{{nt}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableRow">
+      <ng-template ngFor let-item [ngForOf]="row" let-f="fist">        
+        <th scope="row" *ngIf="f">{{row[0]}}</th>
+        <td>{{item}}</td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
