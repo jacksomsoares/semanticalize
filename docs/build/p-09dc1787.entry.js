@@ -1,0 +1,1 @@
+import{r as e,h as s,H as r}from"./p-29e80129.js";const a=class{constructor(s){e(this,s)}render(){return s(r,null,s("h3",null,"Manual"),s("p",null,"O manual pode ser acessado neste ",s("a",{href:"https://docs.google.com/document/d/1M_eK21grBoxN4A99VNgBBrAJE_eE1RU1nw9V67GBqQc/edit?usp=sharing",target:"_blank"},"link"),"."))}};a.style="";export{a as app_home}
