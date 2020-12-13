@@ -9,7 +9,7 @@ export class AppRoot {
   render() {
 
     return (
-      <stencil-router>
+      <stencil-router historyType="hash">
         <header class="bg-dark">
           <div class="container p-2">
             <stencil-route-link activeClass="active" anchorClass="navbar-brand" url="/" exact={true}>
